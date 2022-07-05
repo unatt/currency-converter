@@ -38,7 +38,10 @@ export default {
   justify-content: space-between;
   border-radius: 10px;
   background: $main-bg;
-  margin: 0.5rem;
+  margin: 1rem;
+  @media screen and (max-width: $mobile) {
+    margin-bottom: 2.5rem;
+  }
 }
 
 input,

@@ -1,10 +1,10 @@
 <template>
   <main>
     <div class="location">
-      <h3>It seems you're in</h3>
+      <h3>Your current location:</h3>
       <p>{{ country }}</p>
     </div>
-    <div class="converter">
+    <div class="converter" v-if="rates">
       <CurrencyInput
         :amount="baseAmount"
         :currency="baseCurrency"
@@ -20,6 +20,7 @@
         :currencies="Object.keys(rates)"
       />
     </div>
+    <div v-else>Loading convertion rates...</div>
   </main>
 </template>
 
@@ -44,7 +45,7 @@ export default {
       baseCurrency: DEFAULT_BASE,
       convertionAmount: null,
       convertionCurrency: DEFAULT_CONVERTION,
-      rates: [],
+      rates: null,
       country: "",
       flag: null,
     };
@@ -136,6 +137,7 @@ main {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   .location {
