@@ -1,956 +1,612 @@
 export function getCurrencyDetailsByLocale(locale) {
-  let codeToCountry = {
-    AED: 'United Arab Emirates',
-    AFN: 'Afghanistan',
-    ALL: 'Albania',
-    AMD: 'Armenia',
-    ANG: 'Netherlands Antilles',
-    AOA: 'Angola',
-    ARS: 'Argentina',
-    AUD: 'Australia, Australian Antarctic Territory, Christmas Island, Cocos (Keeling) Islands, Heard and McDonald Islands, Kiribati, Nauru, Norfolk Island, Tuvalu',
-    AWG: 'Aruba',
-    AZN: 'Azerbaijan',
-    BAM: 'Bosnia and Herzegovina',
-    BBD: 'Barbados',
-    BDT: 'Bangladesh',
-    BGN: 'Bulgaria',
-    BHD: 'Bahrain',
-    BIF: 'Burundi',
-    BMD: 'Bermuda',
-    BND: 'Brunei',
-    BOB: 'Bolivia',
-    BOV: 'Bolivia',
-    BRL: 'Brazil',
-    BSD: 'Bahamas',
-    BTN: 'Bhutan',
-    BWP: 'Botswana',
-    BYR: 'Belarus',
-    BZD: 'Belize',
-    CAD: 'Canada',
-    CDF: 'Democratic Republic of Congo',
-    CHE: 'Switzerland',
-    CHF: 'Switzerland, Liechtenstein',
-    CHW: 'Switzerland',
-    CLF: 'Chile',
-    CLP: 'Chile',
-    CNY: 'Mainland China',
-    COP: 'Colombia',
-    COU: 'Colombia',
-    CRC: 'Costa Rica',
-    CUP: 'Cuba',
-    CVE: 'Cape Verde',
-    CYP: 'Cyprus',
-    CZK: 'Czech Republic',
-    DJF: 'Djibouti',
-    DKK: 'Denmark, Faroe Islands, Greenland',
-    DOP: 'Dominican Republic',
-    DZD: 'Algeria',
-    EEK: 'Estonia',
-    EGP: 'Egypt',
-    ERN: 'Eritrea',
-    ETB: 'Ethiopia',
-    EUR: 'European Union, see eurozone',
-    FJD: 'Fiji',
-    FKP: 'Falkland Islands',
-    GBP: 'United Kingdom',
-    GEL: 'Georgia',
-    GHS: 'Ghana',
-    GIP: 'Gibraltar',
-    GMD: 'Gambia',
-    GNF: 'Guinea',
-    GTQ: 'Guatemala',
-    GYD: 'Guyana',
-    HKD: 'Hong Kong Special Administrative Region',
-    HNL: 'Honduras',
-    HRK: 'Croatia',
-    HTG: 'Haiti',
-    HUF: 'Hungary',
-    IDR: 'Indonesia',
-    ILS: 'Israel',
-    INR: 'Bhutan, India',
-    IQD: 'Iraq',
-    IRR: 'Iran',
-    ISK: 'Iceland',
-    JMD: 'Jamaica',
-    JOD: 'Jordan',
-    JPY: 'Japan',
-    KES: 'Kenya',
-    KGS: 'Kyrgyzstan',
-    KHR: 'Cambodia',
-    KMF: 'Comoros',
-    KPW: 'North Korea',
-    KRW: 'South Korea',
-    KWD: 'Kuwait',
-    KYD: 'Cayman Islands',
-    KZT: 'Kazakhstan',
-    LAK: 'Laos',
-    LBP: 'Lebanon',
-    LKR: 'Sri Lanka',
-    LRD: 'Liberia',
-    LSL: 'Lesotho',
-    LTL: 'Lithuania',
-    LVL: 'Latvia',
-    LYD: 'Libya',
-    MAD: 'Morocco, Western Sahara',
-    MDL: 'Moldova',
-    MGA: 'Madagascar',
-    MKD: 'Former Yugoslav Republic of Macedonia',
-    MMK: 'Myanmar',
-    MNT: 'Mongolia',
-    MOP: 'Macau Special Administrative Region',
-    MRO: 'Mauritania',
-    MTL: 'Malta',
-    MUR: 'Mauritius',
-    MVR: 'Maldives',
-    MWK: 'Malawi',
-    MXN: 'Mexico',
-    MXV: 'Mexico',
-    MYR: 'Malaysia',
-    MZN: 'Mozambique',
-    NAD: 'Namibia',
-    NGN: 'Nigeria',
-    NIO: 'Nicaragua',
-    NOK: 'Norway',
-    NPR: 'Nepal',
-    NZD: 'Cook Islands, New Zealand, Niue, Pitcairn, Tokelau',
-    OMR: 'Oman',
-    PAB: 'Panama',
-    PEN: 'Peru',
-    PGK: 'Papua New Guinea',
-    PHP: 'Philippines',
-    PKR: 'Pakistan',
-    PLN: 'Poland',
-    PYG: 'Paraguay',
-    QAR: 'Qatar',
-    RON: 'Romania',
-    RSD: 'Serbia',
-    RUB: 'Russia, Abkhazia, South Ossetia',
-    RWF: 'Rwanda',
-    SAR: 'Saudi Arabia',
-    SBD: 'Solomon Islands',
-    SCR: 'Seychelles',
-    SDG: 'Sudan',
-    SEK: 'Sweden',
-    SGD: 'Singapore',
-    SHP: 'Saint Helena',
-    SKK: 'Slovakia',
-    SLL: 'Sierra Leone',
-    SOS: 'Somalia',
-    SRD: 'Suriname',
-    STD: 'São Tomé and Príncipe',
-    SYP: 'Syria',
-    SZL: 'Swaziland',
-    THB: 'Thailand',
-    TJS: 'Tajikistan',
-    TMM: 'Turkmenistan',
-    TND: 'Tunisia',
-    TOP: 'Tonga',
-    TRY: 'Turkey',
-    TTD: 'Trinidad and Tobago',
-    TWD: 'Taiwan and other islands that are under the effective control of the Republic of China (ROC)',
-    TZS: 'Tanzania',
-    UAH: 'Ukraine',
-    UGX: 'Uganda',
-    USD: 'United States, American Samoa, British Indian Ocean Territory, Ecuador, El Salvador, Guam, Haiti, Marshall Islands, Micronesia, Northern Mariana Islands, Palau, Panama, Puerto Rico, East Timor, Turks and Caicos Islands, Virgin Islands',
-    USN: 'United States',
-    USS: 'United States',
-    UYU: 'Uruguay',
-    UZS: 'Uzbekistan',
-    VEB: 'Venezuela',
-    VND: 'Vietnam',
-    VUV: 'Vanuatu',
-    WST: 'Samoa',
-    XAF: 'Cameroon, Central African Republic, Congo, Chad, Equatorial Guinea, Gabon',
-    XAG: '',
-    XAU: '',
-    XBA: '',
-    XBB: '',
-    XBC: '',
-    XBD: '',
-    XCD: 'Anguilla, Antigua and Barbuda, Dominica, Grenada, Montserrat, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines',
-    XDR: 'International Monetary Fund',
-    XFO: 'Bank for International Settlements',
-    XFU: 'International Union of Railways',
-    XOF: "Benin, Burkina Faso, Côte d'Ivoire, Guinea-Bissau, Mali, Niger, Senegal, Togo",
-    XPD: '',
-    XPF: 'French Polynesia, New Caledonia, Wallis and Futuna',
-    XPT: '',
-    XTS: '',
-    XXX: '',
-    YER: 'Yemen',
-    ZAR: 'South Africa',
-    ZMK: 'Zambia',
-    ZWD: 'Zimbabwe',
+  const currencyWithCountryByLocale = {
+    'ar-AE': {
+      code: 'AED',
+      countryName: 'United Arab Emirates',
+    },
+    'ps-AF': {
+      code: 'AFN',
+      countryName: 'Afghanistan',
+    },
+    'sq-AL': {
+      code: 'ALL',
+      countryName: 'Albania',
+    },
+    'hy-AM': {
+      code: 'AMD',
+      countryName: 'Armenia',
+    },
+    'nl-CW': {
+      code: 'ANG',
+      countryName: 'Netherlands Antilles',
+    },
+    'ln-AO': {
+      code: 'AOA',
+      countryName: 'Angola',
+    },
+    'es-AR': {
+      code: 'ARS',
+      countryName: 'Argentina',
+    },
+    'en-AU': {
+      code: 'AUD',
+      countryName:
+        'Australia, Australian Antarctic Territory, Christmas Island, Cocos (Keeling) Islands, Heard and McDonald Islands, Kiribati, Nauru, Norfolk Island, Tuvalu',
+    },
+    'nl-AW': {
+      code: 'AWG',
+      countryName: 'Aruba',
+    },
+    'az-Cyrl-AZ': {
+      code: 'AZN',
+      countryName: 'Azerbaijan',
+    },
+    'bs-Cyrl-BA': {
+      code: 'BAM',
+      countryName: 'Bosnia and Herzegovina',
+    },
+    'en-BB': {
+      code: 'BBD',
+      countryName: 'Barbados',
+    },
+    'bn-BD': {
+      code: 'BDT',
+      countryName: 'Bangladesh',
+    },
+    'bg-BG': {
+      code: 'BGN',
+      countryName: 'Bulgaria',
+    },
+    'ar-BH': {
+      code: 'BHD',
+      countryName: 'Bahrain',
+    },
+    'rn-BI': {
+      code: 'BIF',
+      countryName: 'Burundi',
+    },
+    'en-BM': {
+      code: 'BMD',
+      countryName: 'Bermuda',
+    },
+    'ms-Latn-BN': {
+      code: 'BND',
+      countryName: 'Brunei',
+    },
+    'es-BO': {
+      code: 'BOB',
+      countryName: 'Bolivia',
+    },
+    'pt-BR': {
+      code: 'BRL',
+      countryName: 'Brazil',
+    },
+    'en-BS': {
+      code: 'BSD',
+      countryName: 'Bahamas',
+    },
+    'dz-BT': {
+      code: 'BTN',
+      countryName: 'Bhutan',
+    },
+    'en-BW': {
+      code: 'BWP',
+      countryName: 'Botswana',
+    },
+    'ru-BY': {
+      code: 'BYR',
+      countryName: 'Belarus',
+    },
+    'en-BZ': {
+      code: 'BZD',
+      countryName: 'Belize',
+    },
+    'fr-CA': {
+      code: 'CAD',
+      countryName: 'Canada',
+    },
+    'lu-CD': {
+      code: 'CDF',
+      countryName: 'Democratic Republic of Congo',
+    },
+    'rm-CH': {
+      code: 'CHF',
+      countryName: 'Switzerland, Liechtenstein',
+    },
+    'es-CL': {
+      code: 'CLP',
+      countryName: 'Chile',
+    },
+    'ii-CN': {
+      code: 'CNY',
+      countryName: 'Mainland China',
+    },
+    'es-CO': {
+      code: 'COP',
+      countryName: 'Colombia',
+    },
+    'es-CR': {
+      code: 'CRC',
+      countryName: 'Costa Rica',
+    },
+    'es-CU': {
+      code: 'CUP',
+      countryName: 'Cuba',
+    },
+    'pt-CV': {
+      code: 'CVE',
+      countryName: 'Cape Verde',
+    },
+    'en-CZ': {
+      code: 'CZK',
+      countryName: 'Czech Republic',
+    },
+    'ar-DJ': {
+      code: 'DJF',
+      countryName: 'Djibouti',
+    },
+    'da-DK': {
+      code: 'DKK',
+      countryName: 'Denmark, Faroe Islands, Greenland',
+    },
+    'es-DO': {
+      code: 'DOP',
+      countryName: 'Dominican Republic',
+    },
+    'kab-DZ': {
+      code: 'DZD',
+      countryName: 'Algeria',
+    },
+    'ar-EG': {
+      code: 'EGP',
+      countryName: 'Egypt',
+    },
+    'ar-ER': {
+      code: 'ERN',
+      countryName: 'Eritrea',
+    },
+    'om-ET': {
+      code: 'ETB',
+      countryName: 'Ethiopia',
+    },
+    'en-DE': {
+      code: 'EUR',
+      countryName: 'European Union, see eurozone',
+    },
+    'en-FJ': {
+      code: 'FJD',
+      countryName: 'Fiji',
+    },
+    'en-FK': {
+      code: 'FKP',
+      countryName: 'Falkland Islands',
+    },
+    'en-GB': {
+      code: 'GBP',
+      countryName: 'United Kingdom',
+    },
+    'ka-GE': {
+      code: 'GEL',
+      countryName: 'Georgia',
+    },
+    'ak-GH': {
+      code: 'GHS',
+      countryName: 'Ghana',
+    },
+    'en-GG': {
+      code: 'GGP',
+    },
+    'en-GI': {
+      code: 'GIP',
+      countryName: 'Gibraltar',
+    },
+    'en-GM': {
+      code: 'GMD',
+      countryName: 'Gambia',
+    },
+    'fr-GN': {
+      code: 'GNF',
+      countryName: 'Guinea',
+    },
+    'es-GT': {
+      code: 'GTQ',
+      countryName: 'Guatemala',
+    },
+    'en-GY': {
+      code: 'GYD',
+      countryName: 'Guyana',
+    },
+    'zh-Hans-HK': {
+      code: 'HKD',
+      countryName: 'Hong Kong Special Administrative Region',
+    },
+    'es-HN': {
+      code: 'HNL',
+      countryName: 'Honduras',
+    },
+    'hr-HR': {
+      code: 'HRK',
+      countryName: 'Croatia',
+    },
+    'fr-HT': {
+      code: 'HTG',
+      countryName: 'Haiti',
+    },
+    'en-HU': {
+      code: 'HUF',
+      countryName: 'Hungary',
+    },
+    'id-ID': {
+      code: 'IDR',
+      countryName: 'Indonesia',
+    },
+    'ar-IL': {
+      code: 'ILS',
+      countryName: 'Israel',
+    },
+    'kok-IN': {
+      code: 'INR',
+      countryName: 'Bhutan, India',
+    },
+    'ar-IQ': {
+      code: 'IQD',
+      countryName: 'Iraq',
+    },
+    'fa-IR': {
+      code: 'IRR',
+      countryName: 'Iran',
+    },
+    'en-IS': {
+      code: 'ISK',
+      countryName: 'Iceland',
+    },
+    'en-JM': {
+      code: 'JMD',
+      countryName: 'Jamaica',
+    },
+    'ar-JO': {
+      code: 'JOD',
+      countryName: 'Jordan',
+    },
+    'ja-JP': {
+      code: 'JPY',
+      countryName: 'Japan',
+    },
+    'saq-KE': {
+      code: 'KES',
+      countryName: 'Kenya',
+    },
+    'ru-KG': {
+      code: 'KGS',
+      countryName: 'Kyrgyzstan',
+    },
+    'km-KH': {
+      code: 'KHR',
+      countryName: 'Cambodia',
+    },
+    'ar-KM': {
+      code: 'KMF',
+      countryName: 'Comoros',
+    },
+    'ko-KP': {
+      code: 'KPW',
+      countryName: 'North Korea',
+    },
+    'ko-KR': {
+      code: 'KRW',
+      countryName: 'South Korea',
+    },
+    'ar-KW': {
+      code: 'KWD',
+      countryName: 'Kuwait',
+    },
+    'en-KY': {
+      code: 'KYD',
+      countryName: 'Cayman Islands',
+    },
+    'kk-Cyrl-KZ': {
+      code: 'KZT',
+      countryName: 'Kazakhstan',
+    },
+    'lo-LA': {
+      code: 'LAK',
+      countryName: 'Laos',
+    },
+    'ar-LB': {
+      code: 'LBP',
+      countryName: 'Lebanon',
+    },
+    'ta-LK': {
+      code: 'LKR',
+      countryName: 'Sri Lanka',
+    },
+    'vai-Latn-LR': {
+      code: 'LRD',
+      countryName: 'Liberia',
+    },
+    'en-LS': {
+      code: 'ZAR',
+      countryName: 'South Africa',
+    },
+    'en-LT': {
+      code: 'LTL',
+      countryName: 'Lithuania',
+    },
+    'en-LV': {
+      code: 'LVL',
+      countryName: 'Latvia',
+    },
+    'ar-LY': {
+      code: 'LYD',
+      countryName: 'Libya',
+    },
+    'ar-MA': {
+      code: 'MAD',
+      countryName: 'Morocco, Western Sahara',
+    },
+    'ru-MD': {
+      code: 'MDL',
+      countryName: 'Moldova',
+    },
+    'mg-MG': {
+      code: 'MGA',
+      countryName: 'Madagascar',
+    },
+    'sq-MK': {
+      code: 'MKD',
+      countryName: 'Former Yugoslav Republic of Macedonia',
+    },
+    'my-MM': {
+      code: 'MMK',
+      countryName: 'Myanmar',
+    },
+    'mn-Cyrl-MN': {
+      code: 'MNT',
+      countryName: 'Mongolia',
+    },
+    'zh-Hant-MO': {
+      code: 'MOP',
+      countryName: 'Macau Special Administrative Region',
+    },
+    'ar-MR': {
+      code: 'MRO',
+      countryName: 'Mauritania',
+    },
+    'en-MU': {
+      code: 'MUR',
+      countryName: 'Mauritius',
+    },
+    'en-MW': {
+      code: 'MWK',
+      countryName: 'Malawi',
+    },
+    'es-MX': {
+      code: 'MXN',
+      countryName: 'Mexico',
+    },
+    'ms-Latn-MY': {
+      code: 'MYR',
+      countryName: 'Malaysia',
+    },
+    'mgh-MZ': {
+      code: 'MZN',
+      countryName: 'Mozambique',
+    },
+    'naq-NA': {
+      code: 'NAD',
+      countryName: 'Namibia',
+    },
+    'ha-Latn-NG': {
+      code: 'NGN',
+      countryName: 'Nigeria',
+    },
+    'es-NI': {
+      code: 'NIO',
+      countryName: 'Nicaragua',
+    },
+    'nn-NO': {
+      code: 'NOK',
+      countryName: 'Norway',
+    },
+    'ne-NP': {
+      code: 'NPR',
+      countryName: 'Nepal',
+    },
+    'en-NZ': {
+      code: 'NZD',
+      countryName: 'Cook Islands, New Zealand, Niue, Pitcairn, Tokelau',
+    },
+    'ar-OM': {
+      code: 'OMR',
+      countryName: 'Oman',
+    },
+    'es-PA': {
+      code: 'PAB',
+      countryName: 'Panama',
+    },
+    'es-PE': {
+      code: 'PEN',
+      countryName: 'Peru',
+    },
+    'en-PG': {
+      code: 'PGK',
+      countryName: 'Papua New Guinea',
+    },
+    'es-PH': {
+      code: 'PHP',
+      countryName: 'Philippines',
+    },
+    'pa-Arab-PK': {
+      code: 'PKR',
+      countryName: 'Pakistan',
+    },
+    'en-PL': {
+      code: 'PLN',
+      countryName: 'Poland',
+    },
+    'es-PY': {
+      code: 'PYG',
+      countryName: 'Paraguay',
+    },
+    'ar-QA': {
+      code: 'QAR',
+      countryName: 'Qatar',
+    },
+    'en-RO': {
+      code: 'RON',
+      countryName: 'Romania',
+    },
+    'sr-Latn-RS': {
+      code: 'RSD',
+      countryName: 'Serbia',
+    },
+    'ru-RU': {
+      code: 'RUB',
+      countryName: 'Russia, Abkhazia, South Ossetia',
+    },
+    'rw-RW': {
+      code: 'RWF',
+      countryName: 'Rwanda',
+    },
+    'ar-SA': {
+      code: 'SAR',
+      countryName: 'Saudi Arabia',
+    },
+    'en-SB': {
+      code: 'SBD',
+      countryName: 'Solomon Islands',
+    },
+    'en-SC': {
+      code: 'SCR',
+      countryName: 'Seychelles',
+    },
+    'ar-SD': {
+      code: 'SDG',
+      countryName: 'Sudan',
+    },
+    'sv-SE': {
+      code: 'SEK',
+      countryName: 'Sweden',
+    },
+    'ms-Latn-SG': {
+      code: 'SGD',
+      countryName: 'Singapore',
+    },
+    'en-SH': {
+      code: 'SHP',
+      countryName: 'Saint Helena',
+    },
+    'en-SL': {
+      code: 'SLL',
+      countryName: 'Sierra Leone',
+    },
+    'ar-SO': {
+      code: 'SOS',
+      countryName: 'Somalia',
+    },
+    'nl-SR': {
+      code: 'SRD',
+      countryName: 'Suriname',
+    },
+    'pt-ST': {
+      code: 'STD',
+      countryName: 'São Tomé and Príncipe',
+    },
+    'ar-SY': {
+      code: 'SYP',
+      countryName: 'Syria',
+    },
+    'en-SZ': {
+      code: 'SZL',
+      countryName: 'Swaziland',
+    },
+    'th-TH': {
+      code: 'THB',
+      countryName: 'Thailand',
+    },
+    'tg-Cyrl-TJ': {
+      code: 'TJS',
+      countryName: 'Tajikistan',
+    },
+    'tk-Latn-TM': {
+      code: 'TMT',
+    },
+    'ar-TN': {
+      code: 'TND',
+      countryName: 'Tunisia',
+    },
+    'to-TO': {
+      code: 'TOP',
+      countryName: 'Tonga',
+    },
+    'tr-TR': {
+      code: 'TRY',
+      countryName: 'Turkey',
+    },
+    'en-TT': {
+      code: 'TTD',
+      countryName: 'Trinidad and Tobago',
+    },
+    'zh-Hant-TW': {
+      code: 'TWD',
+      countryName:
+        'Taiwan and other islands that are under the effective control of the Republic of China (ROC)',
+    },
+    'sw-TZ': {
+      code: 'TZS',
+      countryName: 'Tanzania',
+    },
+    'ru-UA': {
+      code: 'UAH',
+      countryName: 'Ukraine',
+    },
+    'teo-UG': {
+      code: 'UGX',
+      countryName: 'Uganda',
+    },
+    'en-US-POSIX': {
+      code: 'USD',
+      countryName:
+        'United States, American Samoa, British Indian Ocean Territory, Ecuador, El Salvador, Guam, Haiti, Marshall Islands, Micronesia, Northern Mariana Islands, Palau, Panama, Puerto Rico, East Timor, Turks and Caicos Islands, Virgin Islands',
+    },
+    'en-US': {
+      code: 'USD',
+      countryName:
+        'United States, American Samoa, British Indian Ocean Territory, Ecuador, El Salvador, Guam, Haiti, Marshall Islands, Micronesia, Northern Mariana Islands, Palau, Panama, Puerto Rico, East Timor, Turks and Caicos Islands, Virgin Islands',
+    },
+    'es-UY': {
+      code: 'UYU',
+      countryName: 'Uruguay',
+    },
+    'uz-Cyrl-UZ': {
+      code: 'UZS',
+      countryName: 'Uzbekistan',
+    },
+    'es-VE': {
+      code: 'VEF',
+    },
+    'vi-VN': {
+      code: 'VND',
+      countryName: 'Vietnam',
+    },
+    'en-VU': {
+      code: 'VUV',
+      countryName: 'Vanuatu',
+    },
+    'en-WS': {
+      code: 'WST',
+      countryName: 'Samoa',
+    },
+    'ar-YE': {
+      code: 'YER',
+      countryName: 'Yemen',
+    },
+    'af-ZA': {
+      code: 'ZMW',
+    },
   };
 
-  let currencyNames = [
-    {
-      code: 'AED',
-      name: 'Arab Emirates Dirham',
-      locale: 'ar-AE',
-    },
-    {
-      code: 'AFN',
-      name: 'Afghanistan Afghani',
-      locale: 'ps-AF',
-    },
-    {
-      code: 'ALL',
-      name: 'Albanian Lek',
-      locale: 'sq-AL',
-    },
-    {
-      code: 'AMD',
-      name: 'Armenian Dram',
-      locale: 'hy-AM',
-    },
-    {
-      code: 'ANG',
-      name: 'Netherlands Antillean Guilder',
-      locale: 'nl-CW',
-    },
-    {
-      code: 'AOA',
-      name: 'Angolan Kwanza',
-      locale: 'ln-AO',
-    },
-    {
-      code: 'ARS',
-      name: 'Argentine Peso',
-      locale: 'es-AR',
-    },
-    {
-      code: 'AUD',
-      name: 'Australian Dollar',
-      locale: 'en-AU',
-    },
-    {
-      code: 'AWG',
-      name: 'Aruban Guilder',
-      locale: 'nl-AW',
-    },
-    {
-      code: 'AZN',
-      name: 'Azerbaijan New Manat',
-      locale: 'az-Cyrl-AZ',
-    },
-    {
-      code: 'BAM',
-      name: 'Marka',
-      locale: 'bs-Cyrl-BA',
-    },
-    {
-      code: 'BBD',
-      name: 'Barbados Dollar',
-      locale: 'en-BB',
-    },
-    {
-      code: 'BDT',
-      name: 'Bangladeshi Taka',
-      locale: 'bn-BD',
-    },
-    {
-      code: 'BGN',
-      name: 'Bulgarian Lev',
-      locale: 'bg-BG',
-    },
-    {
-      code: 'BHD',
-      name: 'Bahraini Dinar',
-      locale: 'ar-BH',
-    },
-    {
-      code: 'BIF',
-      name: 'Burundi Franc',
-      locale: 'rn-BI',
-    },
-    {
-      code: 'BMD',
-      name: 'Bermudian Dollar',
-      locale: 'en-BM',
-    },
-    {
-      code: 'BND',
-      name: 'Brunei Dollar',
-      locale: 'ms-Latn-BN',
-    },
-    {
-      code: 'BOB',
-      name: 'Boliviano',
-      locale: 'es-BO',
-    },
-    {
-      code: 'BRL',
-      name: 'Brazilian Real',
-      locale: 'pt-BR',
-    },
-    {
-      code: 'BSD',
-      name: 'Bahamian Dollar',
-      locale: 'en-BS',
-    },
-    {
-      code: 'BTN',
-      name: 'Bhutan Ngultrum',
-      locale: 'dz-BT',
-    },
-    {
-      code: 'BWP',
-      name: 'Botswana Pula',
-      locale: 'en-BW',
-    },
-    {
-      code: 'BYR',
-      name: 'Belarussian Ruble',
-      locale: 'ru-BY',
-    },
-    {
-      code: 'BZD',
-      name: 'Belize Dollar',
-      locale: 'en-BZ',
-    },
-    {
-      code: 'CAD',
-      name: 'Canadian Dollar',
-      locale: 'fr-CA',
-    },
-    {
-      code: 'CDF',
-      name: 'Congo/Kinshasa Franc',
-      locale: 'lu-CD',
-    },
-    {
-      code: 'CHF',
-      name: 'Swiss Franc',
-      locale: 'rm-CH',
-    },
-    {
-      code: 'CLP',
-      name: 'Chilean Peso',
-      locale: 'es-CL',
-    },
-    {
-      code: 'CNY',
-      name: 'Yuan Renminbi',
-      locale: 'ii-CN',
-    },
-    {
-      code: 'COP',
-      name: 'Colombian Peso',
-      locale: 'es-CO',
-    },
-    {
-      code: 'CRC',
-      name: 'Costa Rican Colon',
-      locale: 'es-CR',
-    },
-    {
-      code: 'CUP',
-      name: 'Cuban Peso',
-      locale: 'es-CU',
-    },
-    {
-      code: 'CVE',
-      name: 'Cape Verde Escudo',
-      locale: 'pt-CV',
-    },
-    {
-      code: 'CZK',
-      name: 'Czech Koruna',
-      locale: 'en-CZ',
-    },
-    {
-      code: 'DJF',
-      name: 'Djibouti Franc',
-      locale: 'ar-DJ',
-    },
-    {
-      code: 'DKK',
-      name: 'Danish Krone',
-      locale: 'da-DK',
-    },
-    {
-      code: 'DOP',
-      name: 'Dominican Peso',
-      locale: 'es-DO',
-    },
-    {
-      code: 'DZD',
-      name: 'Algerian Dinar',
-      locale: 'kab-DZ',
-    },
-    {
-      code: 'EGP',
-      name: 'Egyptian Pound',
-      locale: 'ar-EG',
-    },
-    {
-      code: 'ERN',
-      name: 'Eritrean Nakfa',
-      locale: 'ar-ER',
-    },
-    {
-      code: 'ETB',
-      name: 'Ethiopian Birr',
-      locale: 'om-ET',
-    },
-    {
-      code: 'EUR',
-      name: 'Euro',
-      locale: 'en-DE',
-    },
-    {
-      code: 'FJD',
-      name: 'Fiji Dollar',
-      locale: 'en-FJ',
-    },
-    {
-      code: 'FKP',
-      name: 'Falkland Islands Pound',
-      locale: 'en-FK',
-    },
-    {
-      code: 'GBP',
-      name: 'Pound Sterling',
-      locale: 'en-GB',
-    },
-    {
-      code: 'GEL',
-      name: 'Georgian Lari',
-      locale: 'ka-GE',
-    },
-    {
-      code: 'GHS',
-      name: 'Ghanaian Cedi',
-      locale: 'ak-GH',
-    },
-    {
-      code: 'GGP',
-      name: 'Guernsey Pound',
-      locale: 'en-GG',
-    },
-    {
-      code: 'GIP',
-      name: 'Gibraltar Pound',
-      locale: 'en-GI',
-    },
-    {
-      code: 'GMD',
-      name: 'Gambian Dalasi',
-      locale: 'en-GM',
-    },
-    {
-      code: 'GNF',
-      name: 'Guinea Franc',
-      locale: 'fr-GN',
-    },
-    {
-      code: 'GTQ',
-      name: 'Guatemalan Quetzal',
-      locale: 'es-GT',
-    },
-    {
-      code: 'GYD',
-      name: 'Guyana Dollar',
-      locale: 'en-GY',
-    },
-    {
-      code: 'HKD',
-      name: 'Hong Kong Dollar',
-      locale: 'zh-Hans-HK',
-    },
-    {
-      code: 'HNL',
-      name: 'Honduran Lempira',
-      locale: 'es-HN',
-    },
-    {
-      code: 'HRK',
-      name: 'Croatian Kuna',
-      locale: 'hr-HR',
-    },
-    {
-      code: 'HTG',
-      name: 'Haitian Gourde',
-      locale: 'fr-HT',
-    },
-    {
-      code: 'HUF',
-      name: 'Hungarian Forint',
-      locale: 'en-HU',
-    },
-    {
-      code: 'IDR',
-      name: 'Indonesian Rupiah',
-      locale: 'id-ID',
-    },
-    {
-      code: 'ILS',
-      name: 'Israeli New Shekel',
-      locale: 'ar-IL',
-    },
-    {
-      code: 'INR',
-      name: 'Indian Rupee',
-      locale: 'kok-IN',
-    },
-    {
-      code: 'IQD',
-      name: 'Iraqi Dinar',
-      locale: 'ar-IQ',
-    },
-    {
-      code: 'IRR',
-      name: 'Iranian Rial',
-      locale: 'fa-IR',
-    },
-    {
-      code: 'ISK',
-      name: 'Iceland Krona',
-      locale: 'en-IS',
-    },
-    {
-      code: 'JMD',
-      name: 'Jamaican Dollar',
-      locale: 'en-JM',
-    },
-    {
-      code: 'JOD',
-      name: 'Jordanian Dinar',
-      locale: 'ar-JO',
-    },
-    {
-      code: 'JPY',
-      name: 'Japanese Yen',
-      locale: 'ja-JP',
-    },
-    {
-      code: 'KES',
-      name: 'Kenyan Shilling',
-      locale: 'saq-KE',
-    },
-    {
-      code: 'KGS',
-      name: 'Som',
-      locale: 'ru-KG',
-    },
-    {
-      code: 'KHR',
-      name: 'Kampuchean Riel',
-      locale: 'km-KH',
-    },
-    {
-      code: 'KMF',
-      name: 'Comoros Franc',
-      locale: 'ar-KM',
-    },
-    {
-      code: 'KPW',
-      name: 'North Korean Won',
-      locale: 'ko-KP',
-    },
-    {
-      code: 'KRW',
-      name: 'Korean Won',
-      locale: 'ko-KR',
-    },
-    {
-      code: 'KWD',
-      name: 'Kuwaiti Dinar',
-      locale: 'ar-KW',
-    },
-    {
-      code: 'KYD',
-      name: 'Cayman Islands Dollar',
-      locale: 'en-KY',
-    },
-    {
-      code: 'KZT',
-      name: 'Kazakhstan Tenge',
-      locale: 'kk-Cyrl-KZ',
-    },
-    {
-      code: 'LAK',
-      name: 'Lao Kip',
-      locale: 'lo-LA',
-    },
-    {
-      code: 'LBP',
-      name: 'Lebanese Pound',
-      locale: 'ar-LB',
-    },
-    {
-      code: 'LKR',
-      name: 'Sri Lanka Rupee',
-      locale: 'ta-LK',
-    },
-    {
-      code: 'LRD',
-      name: 'Liberian Dollar',
-      locale: 'vai-Latn-LR',
-    },
-    {
-      code: 'LSL',
-      name: 'Lesotho loti',
-      locale: 'en-LS',
-    },
-    {
-      code: 'LTL',
-      name: 'Lithuanian Litas',
-      locale: 'en-LT',
-    },
-    {
-      code: 'LVL',
-      name: 'Latvian Lats',
-      locale: 'en-LV',
-    },
-    {
-      code: 'LYD',
-      name: 'Libyan Dinar',
-      locale: 'ar-LY',
-    },
-    {
-      code: 'MAD',
-      name: 'Moroccan Dirham',
-      locale: 'ar-MA',
-    },
-    {
-      code: 'MDL',
-      name: 'Moldovan Leu',
-      locale: 'ru-MD',
-    },
-    {
-      code: 'MGA',
-      name: 'Malagasy Ariary',
-      locale: 'mg-MG',
-    },
-    {
-      code: 'MKD',
-      name: 'Denar',
-      locale: 'sq-MK',
-    },
-    {
-      code: 'MMK',
-      name: 'Myanmar Kyat',
-      locale: 'my-MM',
-    },
-    {
-      code: 'MNT',
-      name: 'Mongolian Tugrik',
-      locale: 'mn-Cyrl-MN',
-    },
-    {
-      code: 'MOP',
-      name: 'Macau Pataca',
-      locale: 'zh-Hant-MO',
-    },
-    {
-      code: 'MRO',
-      name: 'Mauritanian Ouguiya',
-      locale: 'ar-MR',
-    },
-    {
-      code: 'MUR',
-      name: 'Mauritius Rupee',
-      locale: 'en-MU',
-    },
-    {
-      code: 'MWK',
-      name: 'Malawi Kwacha',
-      locale: 'en-MW',
-    },
-    {
-      code: 'MXN',
-      name: 'Mexican Nuevo Peso',
-      locale: 'es-MX',
-    },
-    {
-      code: 'MYR',
-      name: 'Malaysian Ringgit',
-      locale: 'ms-Latn-MY',
-    },
-    {
-      code: 'MZN',
-      name: 'Mozambique Metical',
-      locale: 'mgh-MZ',
-    },
-    {
-      code: 'NAD',
-      name: 'Namibian Dollar',
-      locale: 'naq-NA',
-    },
-    {
-      code: 'NGN',
-      name: 'Nigerian Naira',
-      locale: 'ha-Latn-NG',
-    },
-    {
-      code: 'NIO',
-      name: 'Nicaraguan Cordoba Oro',
-      locale: 'es-NI',
-    },
-    {
-      code: 'NOK',
-      name: 'Norwegian Krone',
-      locale: 'nn-NO',
-    },
-    {
-      code: 'NPR',
-      name: 'Nepalese Rupee',
-      locale: 'ne-NP',
-    },
-    {
-      code: 'NZD',
-      name: 'New Zealand Dollar',
-      locale: 'en-NZ',
-    },
-    {
-      code: 'OMR',
-      name: 'Omani Rial',
-      locale: 'ar-OM',
-    },
-    {
-      code: 'PAB',
-      name: 'Panamanian Balboa',
-      locale: 'es-PA',
-    },
-    {
-      code: 'PEN',
-      name: 'Peruvian Nuevo Sol',
-      locale: 'es-PE',
-    },
-    {
-      code: 'PGK',
-      name: 'Papua New Guinea Kina',
-      locale: 'en-PG',
-    },
-    {
-      code: 'PHP',
-      name: 'Philippine Peso',
-      locale: 'es-PH',
-    },
-    {
-      code: 'PKR',
-      name: 'Pakistan Rupee',
-      locale: 'pa-Arab-PK',
-    },
-    {
-      code: 'PLN',
-      name: 'Polish Zloty',
-      locale: 'en-PL',
-    },
-    {
-      code: 'PYG',
-      name: 'Paraguay Guarani',
-      locale: 'es-PY',
-    },
-    {
-      code: 'QAR',
-      name: 'Qatari Rial',
-      locale: 'ar-QA',
-    },
-    {
-      code: 'RON',
-      name: 'Romanian New Leu',
-      locale: 'en-RO',
-    },
-    {
-      code: 'RSD',
-      name: 'Dinar',
-      locale: 'sr-Latn-RS',
-    },
-    {
-      code: 'RUB',
-      name: 'Russian Ruble',
-      locale: 'ru-RU',
-    },
-    {
-      code: 'RWF',
-      name: 'Rwanda Franc',
-      locale: 'rw-RW',
-    },
-    {
-      code: 'SAR',
-      name: 'Saudi Riyal',
-      locale: 'ar-SA',
-    },
-    {
-      code: 'SBD',
-      name: 'Solomon Islands Dollar',
-      locale: 'en-SB',
-    },
-    {
-      code: 'SCR',
-      name: 'Seychelles Rupee',
-      locale: 'en-SC',
-    },
-    {
-      code: 'SDG',
-      name: 'Sudanese Pound',
-      locale: 'ar-SD',
-    },
-    {
-      code: 'SEK',
-      name: 'Swedish Krona',
-      locale: 'sv-SE',
-    },
-    {
-      code: 'SGD',
-      name: 'Singapore Dollar',
-      locale: 'ms-Latn-SG',
-    },
-    {
-      code: 'SHP',
-      name: 'Saint Helena Pound',
-      locale: 'en-SH',
-    },
-    {
-      code: 'SLL',
-      name: 'Sierra Leone Leone',
-      locale: 'en-SL',
-    },
-    {
-      code: 'SOS',
-      name: 'Somali Shilling',
-      locale: 'ar-SO',
-    },
-    {
-      code: 'SRD',
-      name: 'Surinam Dollar',
-      locale: 'nl-SR',
-    },
-    {
-      code: 'STD',
-      name: 'Dobra',
-      locale: 'pt-ST',
-    },
-    {
-      code: 'SYP',
-      name: 'Syrian Pound',
-      locale: 'ar-SY',
-    },
-    {
-      code: 'SZL',
-      name: 'Swaziland Lilangeni',
-      locale: 'en-SZ',
-    },
-    {
-      code: 'THB',
-      name: 'Thai Baht',
-      locale: 'th-TH',
-    },
-    {
-      code: 'TJS',
-      name: 'Tajik Somoni',
-      locale: 'tg-Cyrl-TJ',
-    },
-    {
-      code: 'TMT',
-      name: 'Manat',
-      locale: 'tk-Latn-TM',
-    },
-    {
-      code: 'TND',
-      name: 'Tunisian Dollar',
-      locale: 'ar-TN',
-    },
-    {
-      code: 'TOP',
-      name: "Tongan Pa'anga",
-      locale: 'to-TO',
-    },
-    {
-      code: 'TRY',
-      name: 'Turkish Lira',
-      locale: 'tr-TR',
-    },
-    {
-      code: 'TTD',
-      name: 'Trinidad and Tobago Dollar',
-      locale: 'en-TT',
-    },
-    {
-      code: 'TWD',
-      name: 'Taiwan Dollar',
-      locale: 'zh-Hant-TW',
-    },
-    {
-      code: 'TZS',
-      name: 'Tanzanian Shilling',
-      locale: 'sw-TZ',
-    },
-    {
-      code: 'UAH',
-      name: 'Ukraine Hryvnia',
-      locale: 'ru-UA',
-    },
-    {
-      code: 'UGX',
-      name: 'Uganda Shilling',
-      locale: 'teo-UG',
-    },
-    {
-      code: 'USD',
-      name: 'US Dollar',
-      locale: 'en-US-POSIX',
-    },
-    {
-      code: 'USD',
-      name: 'US Dollar',
-      locale: 'en-US',
-    },
-    {
-      code: 'UYU',
-      name: 'Uruguayan Peso',
-      locale: 'es-UY',
-    },
-    {
-      code: 'UZS',
-      name: 'Uzbekistan Sum',
-      locale: 'uz-Cyrl-UZ',
-    },
-    {
-      code: 'VEF',
-      name: 'Venezuelan Bolivar',
-      locale: 'es-VE',
-    },
-    {
-      code: 'VND',
-      name: 'Vietnamese Dong',
-      locale: 'vi-VN',
-    },
-    {
-      code: 'VUV',
-      name: 'Vanuatu Vatu',
-      locale: 'en-VU',
-    },
-    {
-      code: 'WST',
-      name: 'Samoan Tala',
-      locale: 'en-WS',
-    },
-    {
-      code: 'YER',
-      name: 'Yemeni Rial',
-      locale: 'ar-YE',
-    },
-    {
-      code: 'ZAR',
-      name: 'South African Rand',
-      locale: 'en-LS',
-    },
-    {
-      code: 'ZMW',
-      name: 'Zambian Kwacha',
-      locale: 'af-ZA',
-    },
-  ];
-
-  const code = currencyNames.find((l) => l.locale === locale);
-  if (code) {
-    return {
-      curCode: code.code,
-      country: codeToCountry[code.code].split(',')[0],
-    };
+  if (currencyWithCountryByLocale[locale]) {
+    return currencyWithCountryByLocale[locale];
   }
 }

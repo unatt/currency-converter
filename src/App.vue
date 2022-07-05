@@ -10,14 +10,14 @@
         :currency="baseCurrency"
         @changeCurrency="changeBaseCurrency"
         @changeAmount="changeBaseAmount"
-        :currencies="Object.keys(rates)"
+        :currencies="currencyList"
       />
       <CurrencyInput
         :amount="convertionAmount"
         :currency="convertionCurrency"
         @changeCurrency="changeConvertionCurrency"
         @changeAmount="changeConvertionAmount"
-        :currencies="Object.keys(rates)"
+        :currencies="currencyList"
       />
     </div>
     <div v-else>Loading convertion rates...</div>
@@ -50,6 +50,11 @@ export default {
       country: "",
       flag: null,
     };
+  },
+  computed: {
+    currencyList: function () {
+      return Object.keys(this.rates);
+    },
   },
   methods: {
     changeBaseAmount(newBaseAmount) {
@@ -96,11 +101,14 @@ export default {
 
     const getBaseLocation = () => {
       const location = getCurrencyDetailsByLocale(navigator.languages[0]) ?? {
-        curCode: DEFAULT_BASE,
-        country: DEFAULT_COUNTRY,
+        code: DEFAULT_BASE,
+        countryName: DEFAULT_COUNTRY,
       };
 
-      return { currency: location.curCode, country: location.country };
+      return {
+        currency: location.code,
+        country: location.countryName.split(",")[0],
+      };
     };
 
     const initialConvertionSetup = async () => {
