@@ -151,7 +151,7 @@ export function getCurrencyDetailsByLocale(locale) {
     TZS: 'Tanzania',
     UAH: 'Ukraine',
     UGX: 'Uganda',
-    USD: 'American Samoa, British Indian Ocean Territory, Ecuador, El Salvador, Guam, Haiti, Marshall Islands, Micronesia, Northern Mariana Islands, Palau, Panama, Puerto Rico, East Timor, Turks and Caicos Islands, United States, Virgin Islands',
+    USD: 'United States, American Samoa, British Indian Ocean Territory, Ecuador, El Salvador, Guam, Haiti, Marshall Islands, Micronesia, Northern Mariana Islands, Palau, Panama, Puerto Rico, East Timor, Turks and Caicos Islands, Virgin Islands',
     USN: 'United States',
     USS: 'United States',
     UYU: 'Uruguay',
@@ -893,6 +893,11 @@ export function getCurrencyDetailsByLocale(locale) {
       code: 'USD',
       name: 'US Dollar',
       locale: 'en-US-POSIX',
+    },
+    {
+      code: 'USD',
+      name: 'US Dollar',
+      locale: 'en-US',
     },
     {
       code: 'UYU',

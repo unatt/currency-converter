@@ -29,7 +29,8 @@ import CurrencyInput from "./components/CurrencyInput.vue";
 import { getCurrencyDetailsByLocale } from "./utils/currencyByLocale.js";
 import { COUNTRY_EMOJIS } from "./assets/funEmojiCountries.js";
 
-const DEFAULT_BASE = "EUR";
+const DEFAULT_BASE = "RUB";
+const DEFAULT_COUNTRY = "Russia";
 const DEFAULT_CONVERTION = "USD";
 
 const format = (number) => {
@@ -94,7 +95,11 @@ export default {
     // browser language is used to detect client currency and country
 
     const getBaseLocation = () => {
-      const location = getCurrencyDetailsByLocale(navigator.language);
+      const location = getCurrencyDetailsByLocale(navigator.language) ?? {
+        curCode: DEFAULT_BASE,
+        country: DEFAULT_COUNTRY,
+      };
+
       return { currency: location.curCode, country: location.country };
     };
 
