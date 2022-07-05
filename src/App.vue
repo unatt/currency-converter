@@ -95,7 +95,7 @@ export default {
     // browser language is used to detect client currency and country
 
     const getBaseLocation = () => {
-      const location = getCurrencyDetailsByLocale(navigator.language) ?? {
+      const location = getCurrencyDetailsByLocale(navigator.languages[0]) ?? {
         curCode: DEFAULT_BASE,
         country: DEFAULT_COUNTRY,
       };

@@ -947,8 +947,10 @@ export function getCurrencyDetailsByLocale(locale) {
   ];
 
   const code = currencyNames.find((l) => l.locale === locale);
-  return {
-    curCode: code.code,
-    country: codeToCountry[code.code].split(',')[0],
-  };
+  if (code) {
+    return {
+      curCode: code.code,
+      country: codeToCountry[code.code].split(',')[0],
+    };
+  }
 }
