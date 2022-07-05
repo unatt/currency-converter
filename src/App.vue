@@ -91,24 +91,15 @@ export default {
       return data.rates;
     };
 
-    // I desided to use geolocation API, if it fails then browser language uses to detect client currency and country
+    // browser language is used to detect client currency and country
 
-    const fetchBaseLocation = async () => {
-      try {
-        const response = await fetch(
-          "http://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,currency"
-        );
-        const data = await response.json();
-        return { currency: data.currency, country: data.country };
-      } catch (error) {
-        console.log("Autodetection of currency failed");
-        const location = getCurrencyDetailsByLocale(navigator.language);
-        return { currency: location.curCode, country: location.country };
-      }
+    const getBaseLocation = () => {
+      const location = getCurrencyDetailsByLocale(navigator.language);
+      return { currency: location.curCode, country: location.country };
     };
 
     const initialConvertionSetup = async () => {
-      const location = await fetchBaseLocation();
+      const location = getBaseLocation();
       this.baseCurrency = location.currency;
       this.country = COUNTRY_EMOJIS[location.country] ?? location.country; // had some fun showing emoji instead of country
       this.rates = await fetchRates(this.baseCurrency);
