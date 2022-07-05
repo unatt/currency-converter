@@ -31,7 +31,7 @@ import { COUNTRY_EMOJIS } from "./assets/funEmojiCountries.js";
 
 const DEFAULT_BASE = "RUB";
 const DEFAULT_COUNTRY = "Russia";
-const DEFAULT_CONVERTION = "USD";
+const DEFAULT_CONVERTION = "EUR";
 
 const format = (number) => {
   return number.toFixed(4);
