@@ -1,19 +1,25 @@
 # currency-converter
 
-## Project setup
-```
-npm install
-```
+Приложение "конвертер валют"
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Возможности приложения
 
-### Compiles and minifies for production
-```
-npm run build
-```
+* Приложение позволяет на лету конвертировать валюту.
+* Базовая валюта и местоположение пользователя определяется по локали браузера.
+ * Для некоторых стран вместо названия страны показываются эмодзи, соответсвующие этой стране.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Комментарии реализации
+
+* Создавал приложение с помощью Vue CLI.
+* Использовал SASS для стилей и глобальных переменных.
+* Для получения курса валют использовал API, не требующее ключа https://exchangerate.host/#/
+
+  Курс у них обновляется только раз в день, но тем не менее этого достаточного для демонстрации работы приложения.
+
+## Демо 
+
+Настроен автодеплой на Netlify, доступен по ссылке [Currency converter](https://taupe-creponne-bfa02c.netlify.app/)
+
+### Локальный запуск
+
+* npm run serve
