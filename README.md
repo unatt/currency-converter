@@ -18,7 +18,7 @@
 
 ## Демо 
 
-Настроен автодеплой на Netlify, доступен по ссылке [Currency converter](https://taupe-creponne-bfa02c.netlify.app/)
+Настроен автодеплой на Netlify, доступен по ссылке [Currency converter](https://resonant-bunny-d8a737.netlify.app/)
 
 ### Локальный запуск
 
